@@ -1,1 +1,9 @@
 @import url("https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.slate.min.css");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+}
