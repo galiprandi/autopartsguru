@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "db:studio": "npx --yes prisma studio",
+    "db:generate": "npx --yes prisma generate",
     "postinstall": "prisma generate"
   },
   "dependencies": {
