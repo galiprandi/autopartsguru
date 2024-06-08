@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/create-next-app).
+# AutoPartsGuru
 
-## Getting Started
+AutoPartsGuru is a comprehensive application designed to search and manage auto parts and their equivalences. It aims to streamline the process of finding compatible parts, making it easier for users to maintain and repair vehicles.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [AutoPartsGuru](#autopartsguru)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Contact](#contact)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Search Auto Parts**: Easily search for auto parts using various filters and criteria.
+- **Manage Parts**: Add, edit, and delete auto parts in the database.
+- **Equivalences**: Find and manage equivalent parts for different brands and models.
+- **User-Friendly Interface**: Intuitive design for a seamless user experience.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load Inter, a custom Google Font.
+## Installation
 
-## Learn More
+To run AutoPartsGuru locally, follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/autopartsguru.git
+   ```
+2. **Navigate to the project directory**
+   ```bash
+   cd autopartsguru
+   ```
+3. **Install dependencies**
+   ```bash
+   npm install
+   ```
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Open your browser and navigate to `http://localhost:3000`.
+2. Use the search bar to find auto parts.
+3. Manage parts through the admin panel.
+4. Explore equivalent parts to find compatible replacements.
 
-## Deploy on Vercel
+For a live demo, visit [AutoPartsGuru](https://autopartsguru.vercel.app).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Contributions are welcome! Please follow these steps to contribute:
+
+1. **Fork the repository**
+2. **Create a new branch**
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. **Make your changes**
+4. **Commit your changes**
+   ```bash
+   git commit -m "Add your commit message"
+   ```
+5. **Push to the branch**
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+6. **Open a pull request**
+
+## License
+
+This project is licensed under the [Proprietary License](LICENSE) file. Unauthorized copying, distribution, modification, or any other use is strictly prohibited.
+
+## Contact
+
+For questions or feedback, please contact us at [galiprandi@gmail.com](mailto:galiprandi@gmail.com).
+
+---
+
+Thank you for using AutoPartsGuru! We hope it makes your auto part management experience seamless and efficient.
