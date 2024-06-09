@@ -8,12 +8,4 @@ export default async function UserAvatar() {
   if (!session?.user) return <SignInButton />;
 
   return <SignOutButton />;
-  //     <button onClick={()=>)}>
-  //       {session.user.image ? (
-  //         <img src={session.user.image} alt="User Avatar" />
-  //       ) : (
-  //         <span>{session.user.name}</span>
-  //       )}
-  //     </button>
-  //   );
 }

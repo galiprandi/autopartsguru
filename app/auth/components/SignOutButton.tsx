@@ -9,18 +9,18 @@ export async function SignOutButton() {
         await signOut();
       }}
     >
-      <button type="submit">
-        {session?.user?.image ? (
-          <img
-            src={session.user.image}
-            alt={session?.user?.name ?? "Avatar"}
-            width={25}
-            height={25}
-          />
-        ) : (
+      {session?.user?.image ? (
+        <img
+          src={session.user.image}
+          alt={session?.user?.name ?? "Avatar"}
+          width={25}
+          height={25}
+        />
+      ) : (
+        <button type="submit">
           <span>{session?.user?.name ?? "Sign Out"}</span>
-        )}
-      </button>
+        </button>
+      )}
     </form>
   );
 }
