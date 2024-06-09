@@ -7,14 +7,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(DB),
   providers: [
     Google({
-      profile(profile) {
-        return { ...profile, role: profile.role ?? "user" };
-      },
+      // profile(profile) {
+      //    return { ...profile, role: profile.role ?? "user" };
+      // },
     }),
   ],
   callbacks: {
     session({ session, user }) {
-      session.user.role = user.role;
+      // session.user.role = user.role;
       return session;
     },
   },
