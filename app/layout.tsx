@@ -3,9 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import styles from "./layout.module.css";
 import { DB } from "@/lib/db/db";
-import { SignInButton } from "@/app/auth/components/SignInButton";
-import { SignOutButton } from "./auth/components/SignOutButton";
-import UserAvatar from "./auth/components/UserAvatar";
+import { Avatar } from "@components/auth/Avatar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,12 +32,17 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${styles.body}`}
       >
         <div className={styles.layout}>
-          <aside>aside</aside>
+          <aside>
+            <header></header>
+            <main></main>
+            <footer>
+              <Avatar />
+            </footer>
+          </aside>
           <main>
             <header>
               <nav>
                 <h1>👨‍🔧 Auto Parts Guru</h1>
-                <UserAvatar />
               </nav>
             </header>
             {children}

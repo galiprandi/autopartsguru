@@ -7,3 +7,7 @@
 html {
   margin: 0;
 }
+
+svg path {
+  fill: tomato !important;
+}
