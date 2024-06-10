@@ -36,6 +36,7 @@ const columns = [
     ),
   }),
 ];
+
 export const UsersList = ({ data }: { data: UsersDataType[] }) => {
   return <Table data={data} columns={columns} />;
 };

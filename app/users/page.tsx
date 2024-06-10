@@ -28,3 +28,5 @@ export default async function Users() {
     </>
   );
 }
+
+export type UsersDataType = (typeof users)[number];

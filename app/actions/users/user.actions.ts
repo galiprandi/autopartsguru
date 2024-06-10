@@ -1,13 +1,11 @@
 "use server";
 
-import { z } from "zod";
-import { UsersRoles } from "@/app/services/roles.service";
+import { BasicUserSchema } from "@/app/schemas/users.schemas";
 import {
   AddUserService,
   GetUserByEmailService,
 } from "@/app/services/users.service";
-
-const { object, string } = z;
+import { z } from "zod";
 
 /**
  * Add new user to the system.
@@ -25,7 +23,7 @@ export async function userAdd(
       email: formData.get("email"),
       role: formData.get("role"),
     };
-    const data = UserAddSchema.parse(rawData);
+    const data = BasicUserSchema.parse(rawData);
 
     // Check if email already exists
     const existUser = await GetUserByEmailService(data.email);
@@ -53,22 +51,6 @@ export async function userAdd(
     };
   }
 }
-
-const UserAddSchema = z.object({
-  alias: string({
-    required_error: "Ingrese un nombre para el usuario.",
-  }).min(4, {
-    message: "El nombre es demasiado corto.",
-  }),
-  email: string({
-    required_error: "Ingrese un correo electrónico.",
-  }).email({
-    message: "Correo electrónico no válido.",
-  }),
-  role: z.enum(UsersRoles, {
-    message: "El rol seleccionado no es válido.",
-  }),
-});
 
 type UserAddState = {
   status: "idle" | "success" | "error";
