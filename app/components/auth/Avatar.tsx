@@ -7,7 +7,5 @@ export async function Avatar() {
 
   if (!session?.user) return <SignInButton />;
 
-  console.log(session.user);
-
   return <SignOutButton />;
 }
