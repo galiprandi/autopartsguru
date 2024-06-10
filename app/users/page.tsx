@@ -1,26 +1,30 @@
-"use server";
-
-import { DB } from "@/lib/db/db";
 import { UsersList } from "./components/UsersList";
+import { GetUsersService } from "../services/users.service";
+import { GetRoles } from "../services/roles.service";
+import { AddUserForm } from "./components/AddUserForm";
 
-const users = await DB.user.findMany();
+const users = await GetUsersService();
+const roles = await GetRoles();
 
 export default async function Users() {
-  const users = await DB.user.findMany();
   return (
-    <section>
-      <h3>Users</h3>
+    <>
+      <section>
+        <nav>
+          <ul>
+            <li>
+              <h3>Usuarios</h3>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <AddUserForm roles={roles} />
+            </li>
+          </ul>
+        </nav>
 
-      <UsersList data={users} />
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            {user.email} ({user.role})
-          </li>
-        ))}
-      </ul>
-    </section>
+        <UsersList data={users} />
+      </section>
+    </>
   );
 }
-
-export type UsersDataType = (typeof users)[number];

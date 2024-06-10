@@ -1,6 +1,7 @@
 "use client";
 
 import { DialogForm } from "@components/ui/Dialog";
+import { useRouter } from "next/navigation";
 import {
   GetRoleDescription,
   GetRoles,
@@ -11,23 +12,21 @@ import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { userAdd } from "@/app/actions/users/user.actions";
 
-const roles = await GetRoles();
-
-export default function AddUser({
-  isOpen,
-  onClose,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-}) {
+export const AddUserForm = ({ roles }: { roles: Roles }) => {
+  const router = useRouter();
   const { pending } = useFormStatus();
+  const [isOpen, setIsOpen] = useState(false);
   const [state, action] = useActionState(userAdd, {
     status: "idle",
   });
   const [roleSelected, setRoleSelected] =
-    useState<(typeof roles)[number]>("ADMIN");
+    useState<(typeof roles)[number]>("USER");
 
-  if (state.status === "success") onClose();
+  if (state.status === "success") {
+    setIsOpen(false);
+    router.push("/users");
+  }
+
   return (
     <DialogForm
       formAttr={{ action }}
@@ -43,7 +42,7 @@ export default function AddUser({
                 type="reset"
                 value="Cancelar"
                 className="text secondary"
-                onClick={onClose}
+                onClick={() => setIsOpen(false)}
               />
             </li>
             <li>
@@ -52,38 +51,28 @@ export default function AddUser({
           </ul>
         </nav>
       }
-      onClose={onClose}
+      onClose={() => setIsOpen(false)}
       isOpen={isOpen}
+      openner={<button onClick={() => setIsOpen(true)}>Agregar Usuario</button>}
     >
       <fieldset>
         <label>
           Nombre
-          <input
-            name="alias"
-            placeholder="Nombre"
-            autoComplete="off"
-            required
-          />
+          <input name="alias" autoComplete="off" required />
         </label>
         <label>
           Email
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            autoComplete="off"
-            required
-          />
-          <small>
-            Debe ingresar el email que el usuario utilizará para iniciar sesión.
-          </small>
+          <input type="email" name="email" autoComplete="off" required />
         </label>
+
         <label>
           Rol
           <select
             name="role"
             value={roleSelected}
-            onChange={(e) => setRoleSelected(e.target.value as Roles[number])}
+            onChange={({ target: { value } }) =>
+              setRoleSelected(value as Roles[number])
+            }
           >
             {roles.map((role) => (
               <option key={role} value={role}>
@@ -91,9 +80,9 @@ export default function AddUser({
               </option>
             ))}
           </select>
-          <small>{GetRoleDescription(roleSelected)}</small>
         </label>
+        <small>{GetRoleDescription(roleSelected)}</small>
       </fieldset>
     </DialogForm>
   );
-}
+};

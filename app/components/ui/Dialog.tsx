@@ -2,9 +2,9 @@ import IconButton from "@components/ui/IconButton";
 import { FormHTMLAttributes, ReactNode } from "react";
 
 export function Dialog(props: DialogProps) {
-  const { isOpen, ...rest } = props;
+  const { isOpen, openner, ...rest } = props;
 
-  if (!isOpen) return null;
+  if (!isOpen) return openner;
   return (
     <dialog open={isOpen}>
       <DialogBody {...rest} />
@@ -13,9 +13,9 @@ export function Dialog(props: DialogProps) {
 }
 
 export function DialogForm(props: DialogFormProps) {
-  const { formAttr, isOpen, ...rest } = props;
+  const { formAttr, isOpen, openner, ...rest } = props;
 
-  if (!isOpen) return null;
+  if (!isOpen) return openner;
   return (
     <form {...formAttr}>
       <dialog open={isOpen}>
@@ -54,6 +54,7 @@ type DialogProps = {
   footer?: ReactNode;
   onClose: () => void;
   isOpen?: boolean;
+  openner?: ReactNode;
 };
 
 type DialogFormProps = DialogProps & {

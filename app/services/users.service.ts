@@ -1,6 +1,11 @@
 import { DB } from "@/lib/db/db";
 
-export const GetUserByEmail = async (email: string) =>
+/**
+ * Get user by email.
+ * @param email
+ * @returns User
+ */
+export const GetUserByEmailService = async (email: string) =>
   await DB.user.findFirst({
     where: {
       email,
@@ -14,10 +19,20 @@ export const GetUserByEmail = async (email: string) =>
     },
   });
 
-export const GetUsers = async (
+/**
+ * Get all users.
+ * @param params
+ * @returns List of users
+ * */
+export const GetUsersService = async (
   ...params: Parameters<typeof DB.user.findMany>
 ) => await DB.user.findMany(...params);
 
+/**
+ * Check if user is admin.
+ * @param email
+ * @returns Boolean
+ */
 export const isAdminUser = async (email?: string | null) => {
   if (!email) return false;
   const user = await DB.user.findFirst({
@@ -31,3 +46,7 @@ export const isAdminUser = async (email?: string | null) => {
   });
   return !!user;
 };
+
+export const AddUserService = async (
+  data: Parameters<typeof DB.user.create>[0]["data"]
+) => DB.user.create({ data });

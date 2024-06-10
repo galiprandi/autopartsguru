@@ -3,8 +3,9 @@
  * @returns {Promise<string[]>} List of roles
  *
  */
+export const UsersRoles = ["ADMIN", "USER"] as const;
 export type Roles = Awaited<ReturnType<typeof GetRoles>>;
-export const GetRoles = async () => ["ADMIN", "USER"] as const;
+export const GetRoles = async () => UsersRoles;
 
 /**
  * Get role description
