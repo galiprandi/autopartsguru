@@ -11,8 +11,10 @@ export async function SignInButton() {
     >
       <button
         type="submit"
-        className="contrast icon"
+        className="outline icon"
         style={{ padding: 0, margin: 0 }}
+        data-tooltip="Sign in with Google"
+        data-placement="right"
       >
         <Icon icon="user-large" />
       </button>

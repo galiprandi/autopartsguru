@@ -12,7 +12,12 @@ export async function SignOutButton() {
         await signOut();
       }}
     >
-      <button type="submit" className="contrast icon">
+      <button
+        type="submit"
+        className="contrast icon"
+        data-tooltip="Close session"
+        data-placement="right"
+      >
         {session?.user?.image ? (
           <Image
             src={session?.user?.image}

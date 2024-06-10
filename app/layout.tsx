@@ -4,6 +4,7 @@ import "./globals.css";
 import styles from "./layout.module.css";
 import { DB } from "@/lib/db/db";
 import { Avatar } from "@components/auth/Avatar";
+import UserMenu from "./components/ui/UserMenu";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,8 +34,10 @@ export default async function RootLayout({
       >
         <div className={styles.layout}>
           <aside>
-            <header></header>
-            <main></main>
+            <header>👨‍🔧</header>
+            <main>
+              <UserMenu />
+            </main>
             <footer>
               <Avatar />
             </footer>
@@ -42,7 +45,7 @@ export default async function RootLayout({
           <main>
             <header>
               <nav>
-                <h1>👨‍🔧 Auto Parts Guru</h1>
+                <h1>Auto Parts</h1>
               </nav>
             </header>
             {children}
