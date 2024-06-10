@@ -1,6 +1,6 @@
 import { auth, signOut } from "@/auth";
 import Image from "next/image";
-import SignOut from "@/public/icons/sign-out.svg";
+import Icon from "@components/ui/Icon";
 
 export async function SignOutButton() {
   const session = await auth();
@@ -12,19 +12,18 @@ export async function SignOutButton() {
         await signOut();
       }}
     >
-      <button
-        type="submit"
-        className="contrast"
-        style={{ padding: 0, margin: 0 }}
-      >
-        <Image
-          //@ts-expect-error s
-          src={session?.user?.images ?? SignOut}
-          alt={session?.user?.name ?? "Avatar"}
-          width={38}
-          height={38}
-          style={{ borderRadius: session?.user?.image ? "50%" : 0 }}
-        />
+      <button type="submit" className="contrast icon">
+        {session?.user?.image ? (
+          <Image
+            src={session?.user?.image}
+            alt={session?.user?.name ?? "Avatar"}
+            width={38}
+            height={38}
+            style={{ borderRadius: "50%" }}
+          />
+        ) : (
+          <Icon icon="right-from-bracket" />
+        )}
       </button>
     </form>
   );

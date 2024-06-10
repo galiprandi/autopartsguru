@@ -8,6 +8,8 @@ html {
   margin: 0;
 }
 
-svg path {
-  fill: tomato !important;
+button.icon {
+  padding: 0;
+  margin: 0;
+  width: 38px;
 }

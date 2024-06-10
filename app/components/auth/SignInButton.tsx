@@ -1,6 +1,5 @@
 import { signIn } from "@/auth";
-import SignIn from "@/public/icons/sign-in.svg";
-import Image from "next/image";
+import Icon from "@components/ui/Icon";
 
 export async function SignInButton() {
   return (
@@ -12,10 +11,10 @@ export async function SignInButton() {
     >
       <button
         type="submit"
-        className="contrast"
+        className="contrast icon"
         style={{ padding: 0, margin: 0 }}
       >
-        <Image src={SignIn} alt="Sign in" width={38} height={38} />
+        <Icon icon="user-large" />
       </button>
     </form>
   );
