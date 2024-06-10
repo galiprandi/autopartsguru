@@ -1,10 +1,17 @@
+"use server";
+
 import { DB } from "@/lib/db/db";
+import { UsersList } from "./components/UsersList";
+
+const users = await DB.user.findMany();
 
 export default async function Users() {
   const users = await DB.user.findMany();
   return (
     <section>
-      <h1>Users</h1>
+      <h3>Users</h3>
+
+      <UsersList data={users} />
       <ul>
         {users.map((user) => (
           <li key={user.id}>
@@ -15,3 +22,5 @@ export default async function Users() {
     </section>
   );
 }
+
+export type UsersDataType = (typeof users)[number];
