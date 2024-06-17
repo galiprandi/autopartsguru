@@ -1,19 +1,18 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export const Breadcrumb = () => {
-  const path = usePathname()
+  const path = usePathname();
   const breadcrumb = path
-    .split('/')
+    .split("/")
     .filter(Boolean)
     .map((path, idx, arr) => ({
-      href: `/${arr.slice(0, idx).join('/')}/${path}`.replace(/\/\//g, '/'),
+      href: `/${arr.slice(0, idx).join("/")}/${path}`.replace(/\/\//g, "/"),
       label: `${arr[idx]}`,
-    }))
+    }));
 
-  console.log(breadcrumb)
   return (
     <nav aria-label="breadcrumb">
       <ul>
@@ -24,5 +23,5 @@ export const Breadcrumb = () => {
         ))}
       </ul>
     </nav>
-  )
-}
+  );
+};
