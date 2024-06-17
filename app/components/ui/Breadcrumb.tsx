@@ -17,7 +17,7 @@ export const Breadcrumb = () => {
     <nav aria-label="breadcrumb">
       <ul>
         {breadcrumb.map(({ href, label }) => (
-          <li>
+          <li key={href}>
             <Link href={href} children={label} />
           </li>
         ))}
