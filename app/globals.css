@@ -1,54 +1,10 @@
+@import url("./styles/buttons.css");
 * {
   box-sizing: border-box;
 }
 
 html {
   margin: 0;
-}
-
-button,
-input[type="reset"],
-input[type="submit"] {
-  &.icon {
-    border: 0;
-    padding: 0;
-    margin: 0;
-    width: 38px;
-    background: 0;
-    box-shadow: none;
-    color: inherit;
-
-    &:hover {
-      color: var(--pico-primary-background);
-    }
-
-    &.inverse {
-      opacity: 0.5;
-      color: var(--pico-primary-inverse);
-
-      &.active,
-      &:hover {
-        opacity: 1;
-      }
-
-      &:hover {
-        opacity: 0.9;
-      }
-    }
-
-    &.rounded {
-      border-radius: 50%;
-      overflow: hidden;
-    }
-  }
-
-  &.text {
-    padding: 0;
-    margin: 0;
-    width: auto;
-    background: 0;
-    border: 0;
-  }
 }
 
 /* Utility classes */
