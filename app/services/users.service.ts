@@ -56,19 +56,5 @@ export const AddUserService = async (
 
 export const UpdateUserService = async (
   email: string,
-  data: Omit<Parameters<typeof DB.user.update>[0]["data"], "email">
+  data: Parameters<typeof DB.user.update>[0]["data"]
 ) => DB.user.update({ where: { email }, data });
-
-export const ChangeUserEmailService = async (
-  email: string,
-  newEmail: string
-) => {
-  const Validate = z.string().email({
-    message: "El email no es válido",
-  });
-  const parseEmail = Validate.parse(newEmail);
-  return await DB.user.update({
-    where: { email },
-    data: { email: parseEmail },
-  });
-};

@@ -14,7 +14,7 @@ import { z } from "zod";
  * @param formData User data.
  * @returns New state.
  */
-export async function userAdd(
+export async function userAddAction(
   state: UserAddState,
   formData: FormData
 ): Promise<UserAddState> {
@@ -57,6 +57,39 @@ export async function userAdd(
       status: "error",
     };
   }
+}
+
+/**
+ * Update user data
+ */
+export async function userUpdateAction(
+  state: UserAddState,
+  formData: FormData
+) {
+  const rawData = {
+    alias: formData.get("alias"),
+    email: formData.get("email"),
+    role: formData.get("role"),
+    active: formData.get("active") === "on",
+  };
+
+  const validatedData = BasicUserSchema.parse(rawData);
+
+  // Check if email already exists
+  const existUser = await GetUserByEmailService(validatedData.email);
+  if (!existUser) {
+    return {
+      status: "error",
+      message: `El usuario no existe.`,
+    };
+  }
+
+  const updated = await UpdateUserService(existUser.email, validatedData);
+
+  return {
+    status: "success",
+    message: `Usuario ha sido actualizado.`,
+  };
 }
 
 type UserAddState = {

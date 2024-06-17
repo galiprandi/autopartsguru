@@ -6,7 +6,7 @@ import { GetRoleDescription, Roles } from "@/app/services/roles.service";
 
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
-import { userAdd } from "@/app/actions/users/user.actions";
+import { userAddAction } from "@/app/actions/users/user.actions";
 import { BasicUser } from "@/app/schemas/users.schemas";
 
 export const AddUserForm = ({
@@ -19,7 +19,7 @@ export const AddUserForm = ({
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const { pending } = useFormStatus();
-  const [state, action] = useActionState(userAdd, {
+  const [state, action] = useActionState(userAddAction, {
     status: "idle",
   });
   const [roleSelected, setRoleSelected] =
