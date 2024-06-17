@@ -23,15 +23,17 @@ export async function userAdd(
       alias: formData.get("alias"),
       email: formData.get("email"),
       role: formData.get("role"),
+      active: formData.get("active") === "on",
     };
+
     const validatedData = BasicUserSchema.parse(rawData);
 
     // Check if email already exists
     const existUser = await GetUserByEmailService(validatedData.email);
 
     if (existUser) {
-      const { email: _email, ...data } = existUser;
-      const user = await UpdateUserService(existUser.email, data);
+      const { email: _email, ...data } = validatedData;
+      await UpdateUserService(existUser.email, data);
       return {
         status: "success",
         message: `El usuario ha sido actualizado.`,
@@ -42,7 +44,9 @@ export async function userAdd(
     const user = await AddUserService(validatedData);
     return {
       status: "success",
-      message: `Usuario ${user.alias} agregado correctamente.`,
+      message: `Usuario ${user.alias} ${
+        existUser ? "actualizado" : "agregado"
+      } correctamente.`,
     };
   } catch (error) {
     console.error(error);

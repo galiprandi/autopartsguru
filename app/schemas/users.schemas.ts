@@ -14,8 +14,14 @@ export const BasicUserSchema = z.object({
   }).email({
     message: "Correo electrónico no válido.",
   }),
+  picture: string()
+    .url({
+      message: "La URL de la imagen no es válida.",
+    })
+    .optional(),
   role: z.enum(UsersRoles, {
     message: "El rol seleccionado no es válido.",
   }),
+  active: z.boolean().default(true),
 });
 export type BasicUser = z.infer<typeof BasicUserSchema>;

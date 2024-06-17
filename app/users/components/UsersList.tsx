@@ -4,17 +4,27 @@ import { Table } from "@/app/components/ui/Table";
 import { createColumnHelper } from "@tanstack/react-table";
 import { UsersDataType } from "../page";
 import { IconButton } from "@/app/components/ui/IconButton";
+import Icon from "@/app/components/ui/Icon";
 import Link from "next/link";
-import { AddUserForm } from "./AddUserForm";
-import { Roles } from "@/app/services/roles.service";
-import { BasicUser } from "@/app/schemas/users.schemas";
 
 const columnHelper = createColumnHelper<UsersDataType>();
 
 const columns = [
   columnHelper.accessor("alias", {
     id: "alias",
-    cell: (info) => info.getValue(),
+    cell: (info) => (
+      <>
+        {info.getValue()} {info.getValue()}
+      </>
+    ),
+  }),
+  columnHelper.display({
+    id: "active",
+    header: "Activo",
+    cell: ({ row }) =>
+      !row.original.active && (
+        <Icon icon="user-lock" className="error" title="Usuario inhabilitado" />
+      ),
   }),
   columnHelper.accessor("email", {
     id: "email",

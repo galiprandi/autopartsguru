@@ -15,7 +15,7 @@ export const GetUserByEmailService = async (email: string) =>
       alias: true,
       email: true,
       picture: true,
-      enabled: true,
+      active: true,
       role: true,
       createdAt: true,
     },
