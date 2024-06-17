@@ -18,3 +18,4 @@ export const BasicUserSchema = z.object({
     message: "El rol seleccionado no es válido.",
   }),
 });
+export type BasicUser = z.infer<typeof BasicUserSchema>;

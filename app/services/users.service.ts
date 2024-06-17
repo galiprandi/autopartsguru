@@ -14,6 +14,8 @@ export const GetUserByEmailService = async (email: string) =>
       id: true,
       alias: true,
       email: true,
+      picture: true,
+      enabled: true,
       role: true,
       createdAt: true,
     },
@@ -50,3 +52,8 @@ export const isAdminUser = async (email?: string | null) => {
 export const AddUserService = async (
   data: Parameters<typeof DB.user.create>[0]["data"]
 ) => DB.user.create({ data });
+
+export const UpdateUserService = async (
+  email: string,
+  data: Parameters<typeof DB.user.update>[0]["data"]
+) => DB.user.update({ where: { email }, data });

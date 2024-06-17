@@ -2,20 +2,23 @@
 
 import { DialogForm } from "@components/ui/Dialog";
 import { useRouter } from "next/navigation";
-import {
-  GetRoleDescription,
-  GetRoles,
-  Roles,
-} from "@/app/services/roles.service";
+import { GetRoleDescription, Roles } from "@/app/services/roles.service";
 
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { userAdd } from "@/app/actions/users/user.actions";
+import { BasicUser } from "@/app/schemas/users.schemas";
 
-export const AddUserForm = ({ roles }: { roles: Roles }) => {
+export const AddUserForm = ({
+  roles,
+  user,
+}: {
+  roles: Roles;
+  user?: BasicUser;
+}) => {
   const router = useRouter();
-  const { pending } = useFormStatus();
   const [isOpen, setIsOpen] = useState(false);
+  const { pending } = useFormStatus();
   const [state, action] = useActionState(userAdd, {
     status: "idle",
   });
@@ -58,17 +61,30 @@ export const AddUserForm = ({ roles }: { roles: Roles }) => {
       <fieldset>
         <label>
           Nombre
-          <input name="alias" autoComplete="off" required />
+          <input
+            name="alias"
+            autoComplete="off"
+            required
+            defaultValue={user?.alias}
+          />
         </label>
         <label>
           Email
-          <input type="email" name="email" autoComplete="off" required />
+          <input
+            type="email"
+            name="email"
+            autoComplete="off"
+            required
+            defaultValue={user?.email}
+            readOnly={!!user?.email}
+          />
         </label>
 
         <label>
           Rol
           <select
             name="role"
+            defaultValue={user?.role || "USER"}
             value={roleSelected}
             onChange={({ target: { value } }) =>
               setRoleSelected(value as Roles[number])

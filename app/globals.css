@@ -7,8 +7,8 @@ html {
 }
 
 button,
-input[type='reset'],
-input[type='submit'] {
+input[type="reset"],
+input[type="submit"] {
   &.icon {
     border: 0;
     padding: 0;
@@ -52,6 +52,14 @@ input[type='submit'] {
 }
 
 /* Utility classes */
+
+.t-center {
+  text-align: center;
+}
+
+.rounded {
+  border-radius: var(--pico-border-radius);
+}
 
 .capitalize {
   text-transform: capitalize;
