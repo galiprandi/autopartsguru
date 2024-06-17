@@ -11,7 +11,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async signIn({ user }) {
       if (user.email) {
         const data = await GetUserByEmailService(user.email);
-        if (data && data.enabled === false) {
+        if (data && data.active === false) {
           console.log(
             `Denied access to ${user.email} because it's disabled`,
             data
