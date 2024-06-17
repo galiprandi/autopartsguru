@@ -12,19 +12,7 @@ const columnHelper = createColumnHelper<UsersDataType>();
 const columns = [
   columnHelper.accessor("alias", {
     id: "alias",
-    cell: (info) => (
-      <>
-        {info.getValue()} {info.getValue()}
-      </>
-    ),
-  }),
-  columnHelper.display({
-    id: "active",
-    header: "Activo",
-    cell: ({ row }) =>
-      !row.original.active && (
-        <Icon icon="user-lock" className="error" title="Usuario inhabilitado" />
-      ),
+    cell: (info) => <b>{info.getValue()}</b>,
   }),
   columnHelper.accessor("email", {
     id: "email",
@@ -34,6 +22,15 @@ const columns = [
   columnHelper.accessor("role", {
     header: () => "Role",
     cell: (info) => info.renderValue(),
+  }),
+  columnHelper.display({
+    id: "active",
+    header: "",
+    size: 10,
+    cell: ({ row }) =>
+      !row.original.active && (
+        <Icon icon="user-lock" className="error" title="Usuario inhabilitado" />
+      ),
   }),
   columnHelper.display({
     id: "options",
