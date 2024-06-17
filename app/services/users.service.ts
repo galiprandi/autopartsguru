@@ -1,4 +1,5 @@
 import { DB } from "@/lib/db/db";
+import { z } from "zod";
 
 /**
  * Get user by email.
@@ -57,3 +58,17 @@ export const UpdateUserService = async (
   email: string,
   data: Omit<Parameters<typeof DB.user.update>[0]["data"], "email">
 ) => DB.user.update({ where: { email }, data });
+
+export const ChangeUserEmailService = async (
+  email: string,
+  newEmail: string
+) => {
+  const Validate = z.string().email({
+    message: "El email no es válido",
+  });
+  const parseEmail = Validate.parse(newEmail);
+  return await DB.user.update({
+    where: { email },
+    data: { email: parseEmail },
+  });
+};
