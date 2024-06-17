@@ -55,5 +55,5 @@ export const AddUserService = async (
 
 export const UpdateUserService = async (
   email: string,
-  data: Parameters<typeof DB.user.update>[0]["data"]
+  data: Omit<Parameters<typeof DB.user.update>[0]["data"], "email">
 ) => DB.user.update({ where: { email }, data });
