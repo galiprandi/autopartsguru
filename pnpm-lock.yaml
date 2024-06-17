@@ -17,6 +17,9 @@ importers:
       '@fortawesome/react-fontawesome':
         specifier: ^0.2.2
         version: 0.2.2(@fortawesome/fontawesome-svg-core@6.5.2)(react@19.0.0-rc-f994737d14-20240522)
+      '@galiprandi/react-tools':
+        specifier: ^2.0.2
+        version: 2.0.2(react-dom@19.0.0-rc-f994737d14-20240522(react@19.0.0-rc-f994737d14-20240522))(react@19.0.0-rc-f994737d14-20240522)
       '@prisma/client':
         specifier: ^5.15.0
         version: 5.15.0(prisma@5.15.0)
@@ -91,6 +94,12 @@ packages:
     peerDependencies:
       '@fortawesome/fontawesome-svg-core': ~1 || ~6
       react: '>=16.3'
+
+  '@galiprandi/react-tools@2.0.2':
+    resolution: {integrity: sha512-dfdhXarc86iJCq4dasrw7oPSxHGAQFTxt3cQaG7ajzEDYjYjxY9fCmSwJyPWwC+gQdTiOtsW3jADS52t3VeqPA==}
+    peerDependencies:
+      react: ^18.2.0
+      react-dom: ^18.2.0
 
   '@img/sharp-darwin-arm64@0.33.4':
     resolution: {integrity: sha512-p0suNqXufJs9t3RqLBO6vvrgr5OhgbWp76s5gTRvdmxmuv9E1rcaqGUsl3l4mKVmXPkTkTErXediAui4x+8PSA==}
@@ -538,6 +547,11 @@ snapshots:
       '@fortawesome/fontawesome-svg-core': 6.5.2
       prop-types: 15.8.1
       react: 19.0.0-rc-f994737d14-20240522
+
+  '@galiprandi/react-tools@2.0.2(react-dom@19.0.0-rc-f994737d14-20240522(react@19.0.0-rc-f994737d14-20240522))(react@19.0.0-rc-f994737d14-20240522)':
+    dependencies:
+      react: 19.0.0-rc-f994737d14-20240522
+      react-dom: 19.0.0-rc-f994737d14-20240522(react@19.0.0-rc-f994737d14-20240522)
 
   '@img/sharp-darwin-arm64@0.33.4':
     optionalDependencies:

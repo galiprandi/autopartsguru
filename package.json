@@ -17,6 +17,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@galiprandi/react-tools": "^2.0.2",
     "@prisma/client": "^5.15.0",
     "@tanstack/react-table": "^8.17.3",
     "next": "15.0.0-rc.0",
